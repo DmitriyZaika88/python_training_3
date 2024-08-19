@@ -1,4 +1,3 @@
-import time
 
 
 class GroupHelper:
@@ -29,7 +28,6 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         # init group creation
-        time.sleep(5)
         wd.find_element_by_name("new").click()
         self.fill_group_form(group)
         self.submit_group_creation()
@@ -73,3 +71,11 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    # def count_group_name(self):
+    #     wd = self.app.wd
+    #     self.open_groups_page()
+    #     self.select_first_group()
+    #     # edit selected group
+    #     wd.find_element_by_name("edit").click()
+    #     return len(wd.find_elements_by_name("group_name"))
