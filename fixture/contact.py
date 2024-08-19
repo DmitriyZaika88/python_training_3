@@ -13,21 +13,27 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
 
+    def create_contact(self, contact):
+        wd = self.app.wd
+        self.open_contact_creation_page()
+        # form block edition begins
+        self.fill_contact_form(contact)
+        # form block edition end
+        self.sumbit_contact_creation()
+        self.return_to_home_page()
+
     def change_contact_field_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
-            wd.find_element_by_name(field_name).click()
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
-        # name fields
         self.change_contact_field_value("firstname", contact.first_name)
         self.change_contact_field_value("middlename", contact.middle_name)
         self.change_contact_field_value("lastname", contact.last_name)
         self.change_contact_field_value("nickname", contact.nickname)
-        # personal information fields
         self.change_contact_field_value("title", contact.title)
         self.change_contact_field_value("company", contact.company)
         self.change_contact_field_value("address", contact.address)
@@ -35,12 +41,11 @@ class ContactHelper:
         self.change_contact_field_value("mobile", contact.mobile)
         self.change_contact_field_value("work", contact.work)
         self.change_contact_field_value("fax", contact.fax)
-        # method of contact fields
         self.change_contact_field_value("email", contact.email_1)
         self.change_contact_field_value("email2", contact.email_2)
         self.change_contact_field_value("email3", contact.email_3)
         self.change_contact_field_value("homepage", contact.homepage)
-        # birthday fields
+        # date of birth field
         self.change_contact_field_value("bday", contact.day_of_birth)
         self.change_contact_field_value("bmonth", contact.month_of_birth)
         self.change_contact_field_value("byear", contact.year_of_birth)
@@ -48,14 +53,7 @@ class ContactHelper:
         self.change_contact_field_value("aday", contact.anniversary_day)
         self.change_contact_field_value("amonth", contact.anniversary_month)
         self.change_contact_field_value("ayear", contact.anniversary_year)
-
-    def add_personal_information(self, contact):
-        self.open_contact_creation_page()
-        # form block edition begins
-        self.fill_contact_form(contact)
-        # form block edition end
-        self.sumbit_contact_creation()
-        self.return_to_home_page()
+        # wd.find_element_by_name("theform").click()
 
     def sumbit_contact_creation(self):
         wd = self.app.wd
@@ -77,7 +75,8 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_page()
         self.open_contact_edition_page()
-        self.change_contact_field_value(new_contact_data)
+        # clear personal_information_fields
+        self.fill_contact_form(new_contact_data)
         self.update_contact_confirmation()
         self.return_to_home_page()
 

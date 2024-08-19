@@ -11,5 +11,5 @@ def test_modify_first_contact(app):
                                              fax="new_fax",
                                              email_1="modified_email@gmail.com",
                                              email_2="modified_email2@gmail.com",
-                                             email_3="modified_email3@gmail.com",
-                                             homepage=""))
+                                             email_3="modified_email3@gmail.com"))
+
