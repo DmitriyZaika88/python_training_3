@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from model.contact import Contact
-import time
 
 
 def test_add_contact(app):
@@ -19,12 +18,12 @@ def test_add_contact(app):
                                        email_2="dmitriydzk@gmail.com",
                                        email_3="dmitrosnachos@gmail.com",
                                        homepage="yandex.ru",
-                                       day_of_birth="30",
-                                       month_of_birth="June",
-                                       year_of_birth="1997",
-                                       anniversary_day="30",
-                                       anniversary_month="June",
-                                       anniversary_year="2027"))
+                                       day_of_birth="1",
+                                       month_of_birth="July",
+                                       year_of_birth="200",
+                                       anniversary_day="12",
+                                       anniversary_month="July",
+                                       anniversary_year="2022"))
 
 
 def test_add_empty_contact(app):

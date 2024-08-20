@@ -7,7 +7,7 @@ class GroupHelper:
 
     def open_groups_page(self):
         wd = self.app.wd
-        if not wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("new")) > 0:
+        if wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("new")) > 0:
             return
         wd.find_element_by_link_text("groups").click()
 
@@ -72,10 +72,9 @@ class GroupHelper:
         self.open_groups_page()
         return len(wd.find_elements_by_name("selected[]"))
 
-    # def count_group_name(self):
-    #     wd = self.app.wd
-    #     self.open_groups_page()
-    #     self.select_first_group()
-    #     # edit selected group
-    #     wd.find_element_by_name("edit").click()
-    #     return len(wd.find_elements_by_name("group_name"))
+    def count_group_name(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        return len(wd.find_elements_by_xpath('//*[title="Select ()"]'))
+        # return len(wd.find_elements_by_xpath('//input[@value="test_rename"]'))
+        # return len(wd.find_elements_by_xpath("//*[contains(text(), '')]"))

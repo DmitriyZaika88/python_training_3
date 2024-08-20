@@ -11,6 +11,8 @@ class ContactHelper:
 
     def open_contact_page(self):
         wd = self.app.wd
+        if wd.current_url.endswith("/addressbook/"):
+            return
         wd.find_element_by_link_text("home").click()
 
     def create_contact(self, contact):
@@ -53,7 +55,7 @@ class ContactHelper:
         self.change_contact_field_value("aday", contact.anniversary_day)
         self.change_contact_field_value("amonth", contact.anniversary_month)
         self.change_contact_field_value("ayear", contact.anniversary_year)
-        # wd.find_element_by_name("theform").click()
+        wd.find_element_by_name("theform").click()
 
     def sumbit_contact_creation(self):
         wd = self.app.wd
@@ -96,5 +98,4 @@ class ContactHelper:
     def count_contact_first_name(self):
         wd = self.app.wd
         self.open_contact_page()
-        self.open_contact_edition_page()
-        return len(wd.find_elements_by_name("first_name")) != ""
+        return len(wd.find_elements_by_xpath("//*[contains(text(), 'Spb')]"))

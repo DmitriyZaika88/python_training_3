@@ -1,4 +1,3 @@
-
 from model.contact import Contact
 
 
@@ -26,6 +25,7 @@ def test_modify_first_contact(app):
                                              email_3="modified_email3@gmail.com"))
 
 
-def test_modify_contact_with_title(app):
-    if app.contact.count_contact_first_name() > 0:
-        app.contact.modify_first_contact(Contact(first_name="test_rename"))
+def test_modify_contact_with_address(app):
+    if app.contact.count_contact_first_name() == 0:
+        app.contact.modify_first_contact(Contact(address="Saint-Petersburg"))
+    app.contact.modify_first_contact(Contact(address="Spb"))
